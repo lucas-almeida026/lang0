@@ -17,14 +17,14 @@ if (!path.extname(filepath) === '.json') {
 try {
   const contents = fs.readFileSync(filepath, 'utf8');
   const ast = JSON.parse(contents);
-  const output = gen_int(ast);
+  const output = gen_literal(ast);
   fs.writeFileSync('output.js', output);
 } catch(e) {
   console.error(e?.message);
   process.exit(1);
 }
 
-function gen_int(node) {
+function gen_literal(node) {
   const { value } = node
   return value
 }

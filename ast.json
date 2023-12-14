@@ -1,7 +1,7 @@
 {
-  "type": "int",
-  "value": "42",
-  "text": "42",
+  "type": "bool",
+  "value": "true",
+  "text": "true",
   "offset": 0,
   "lineBreaks": 0,
   "line": 1,
