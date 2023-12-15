@@ -1,9 +1,30 @@
 {
-  "type": "bool",
-  "value": "true",
-  "text": "true",
-  "offset": 0,
-  "lineBreaks": 0,
-  "line": 1,
-  "col": 1
+  "type": "binary_expression",
+  "operator": {
+    "type": "plus",
+    "value": "+",
+    "text": "+",
+    "offset": 3,
+    "lineBreaks": 0,
+    "line": 1,
+    "col": 4
+  },
+  "left": {
+    "type": "int",
+    "value": "42",
+    "text": "42",
+    "offset": 0,
+    "lineBreaks": 0,
+    "line": 1,
+    "col": 1
+  },
+  "right": {
+    "type": "int",
+    "value": "1",
+    "text": "1",
+    "offset": 5,
+    "lineBreaks": 0,
+    "line": 1,
+    "col": 6
+  }
 }

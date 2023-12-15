@@ -17,10 +17,32 @@ if (path.extname(filename) !== '.json') {
 try {
   const content = fs.readFileSync(filename, 'utf8');
   const ast = JSON.parse(content);
-  console.log(check_literal(ast));
+  console.log(check_program(ast));
 } catch(e) {
   console.error(e?.message);
   process.exit(1);
+}
+
+function check_program(ast) {
+  const { type } = ast
+  if (type === 'literal') {
+    return check_literal(ast)
+  } else if (type === 'binary_expression') {
+    return check_binary_expression(ast)
+  } else {
+    console.log(`Invalid AST has type = ${type}`)
+    return false
+  }
+}
+
+function check_binary_expression(node) {
+  const { left, right } = node
+  return check_number(left) && check_number(right)
+}
+
+function check_number(node) {
+  const { type } = node
+  return check_int(node) || check_float(node)
 }
 
 function check_int(node) {

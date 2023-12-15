@@ -7,6 +7,10 @@ const tokenizer = moo.compile({
   float: /[-+]?(?:\d+\.\d*|\.\d+)(?:[eE][-+]?\d+)?/,
   int: /0|[-+]?[1-9][0-9]*/,
   bool: /true|false/,
+  plus: '+',
+  dash: '-',
+  star: '*',
+  slash: '/',
   NL: { match: '\n', lineBreaks: true },
 })
 

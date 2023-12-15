@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "nc": "nearleyc lang0.ne -o lang0.js"
   },
   "keywords": [],
   "author": "",
