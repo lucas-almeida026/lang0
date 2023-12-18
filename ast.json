@@ -1,30 +1,21 @@
 {
-  "type": "binary_expression",
+  "type": "unary_expression",
   "operator": {
-    "type": "plus",
-    "value": "+",
-    "text": "+",
-    "offset": 3,
-    "lineBreaks": 0,
-    "line": 1,
-    "col": 4
-  },
-  "left": {
-    "type": "int",
-    "value": "42",
-    "text": "42",
+    "type": "dash",
+    "value": "-",
+    "text": "-",
     "offset": 0,
     "lineBreaks": 0,
     "line": 1,
     "col": 1
   },
-  "right": {
+  "argument": {
     "type": "int",
-    "value": "1",
-    "text": "1",
-    "offset": 5,
+    "value": "3",
+    "text": "3",
+    "offset": 1,
     "lineBreaks": 0,
     "line": 1,
-    "col": 6
+    "col": 2
   }
 }

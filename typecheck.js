@@ -29,6 +29,8 @@ function check_program(ast) {
     return check_literal(ast)
   } else if (type === 'binary_expression') {
     return check_binary_expression(ast)
+  } else if (type === 'unary_expression') {
+    return check_unary_expression(ast)
   } else {
     console.log(`Invalid AST has type = ${type}`)
     return false
@@ -38,6 +40,11 @@ function check_program(ast) {
 function check_binary_expression(node) {
   const { left, right } = node
   return check_number(left) && check_number(right)
+}
+
+function check_unary_expression(node) {
+  const { argument } = node
+  return check_number(argument)
 }
 
 function check_number(node) {

@@ -30,6 +30,8 @@ function gen_program(ast) {
     return gen_literal(ast)
   } else if (type === 'binary_expression') {
     return gen_binary_expression(ast)
+  } else if (type === 'unary_expression') {
+    return gen_unary_expression(ast)
   } else {
     console.log(`Invalid AST has type = ${type}`)
     return ''
@@ -44,4 +46,9 @@ function gen_literal(node) {
 function gen_binary_expression(node) {
   const { operator, left, right } = node
   return `${left.value} ${operator.value} ${right.value}`
+}
+
+function gen_unary_expression(node) {
+  const { operator, argument } = node
+  return `${operator.value}${argument.value}`
 }
