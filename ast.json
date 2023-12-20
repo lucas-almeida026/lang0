@@ -1,21 +1,89 @@
 {
-  "type": "unary_expression",
+  "type": "binary_expression",
   "operator": {
-    "type": "dash",
-    "value": "-",
-    "text": "-",
-    "offset": 0,
-    "lineBreaks": 0,
-    "line": 1,
-    "col": 1
+    "type": "or",
+    //...
   },
-  "argument": {
-    "type": "int",
-    "value": "3",
-    "text": "3",
-    "offset": 1,
-    "lineBreaks": 0,
-    "line": 1,
-    "col": 2
+  "left": {
+    "type": "binary_expression",
+    "operator": {
+      "type": "eqeq",
+      //...
+    },
+    "left": {
+      "type": "binary_expression",
+      "operator": {
+        "type": "gt",
+        //...
+      },
+      "left": {
+        "type": "binary_expression",
+        "operator": {
+          "type": "plus",
+          //...
+        },
+        "left": {
+          "type": "int",
+          "value": "1",
+          //...
+        },
+        "right": {
+          "type": "int",
+          "value": "2",
+          //...
+        }
+      },
+      "right": {
+        "type": "binary_expression",
+        "operator": {
+          "type": "star",
+          //...
+        },
+        "left": {
+          "type": "int",
+          "value": "3",
+          //...
+        },
+        "right": {
+          "type": "int",
+          "value": "4",
+          //...
+        }
+      }
+    },
+    "right": {
+      "type": "binary_expression",
+      "operator": {
+        "type": "lt",
+        //...
+      },
+      "left": {
+        "type": "int",
+        "value": "3",
+        //...
+      },
+      "right": {
+        "type": "int",
+        "value": "1",
+        //...
+      }
+    }
+  },
+  "right": {
+    "type": "binary_expression",
+    "operator": {
+      "type": "dash",
+      //...
+    },
+    "left": {
+      "type": "int",
+      "value": "3",
+      //...
+    },
+    "right": {
+      "type": "int",
+      "value": "1",
+      //...
+    }
   }
 }
