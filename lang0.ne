@@ -47,7 +47,10 @@ unary_operator
 
 primary_expression
   -> literal {% id %}
-  | %lparen term_expression %rparen {% data => data[1] %}
+  | %lparen term_expression %rparen {% data => ({
+    type: 'parenthesized_expression',
+    expression: data[1],
+  }) %}
 
 unary_expression
   -> primary_expression {% id %}

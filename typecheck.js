@@ -25,12 +25,15 @@ try {
 
 function check_program(ast) {
   const { type } = ast
-  if (type === 'literal') {
-    return check_literal(ast)
+  if (check_literal(ast)) {
+    return true
   } else if (type === 'binary_expression') {
     return check_binary_expression(ast)
   } else if (type === 'unary_expression') {
     return check_unary_expression(ast)
+  } else if (type === 'parenthesized_expression') {
+    const { expression } = ast
+    return check_program(expression)
   } else {
     console.log(`Invalid AST has type = ${type}`)
     return false
@@ -39,12 +42,12 @@ function check_program(ast) {
 
 function check_binary_expression(node) {
   const { left, right } = node
-  return check_number(left) && check_number(right)
+  return check_program(left) && check_program(right)
 }
 
 function check_unary_expression(node) {
   const { argument } = node
-  return check_number(argument)
+  return check_program(argument)
 }
 
 function check_number(node) {
@@ -86,3 +89,5 @@ function check_literal(node) {
     check_bool(node)
   )
 }
+
+module.exports.check_literal = check_literal

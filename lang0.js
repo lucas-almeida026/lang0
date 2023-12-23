@@ -35,7 +35,10 @@ var grammar = {
     {"name": "unary_operator", "symbols": [(tokenizer.has("bang") ? {type: "bang"} : bang)], "postprocess": id},
     {"name": "unary_operator", "symbols": [(tokenizer.has("dash") ? {type: "dash"} : dash)], "postprocess": id},
     {"name": "primary_expression", "symbols": ["literal"], "postprocess": id},
-    {"name": "primary_expression", "symbols": [(tokenizer.has("lparen") ? {type: "lparen"} : lparen), "term_expression", (tokenizer.has("rparen") ? {type: "rparen"} : rparen)], "postprocess": data => data[1]},
+    {"name": "primary_expression", "symbols": [(tokenizer.has("lparen") ? {type: "lparen"} : lparen), "term_expression", (tokenizer.has("rparen") ? {type: "rparen"} : rparen)], "postprocess":  data => ({
+          type: 'parenthesized_expression',
+          expression: data[1],
+        }) },
     {"name": "unary_expression", "symbols": ["primary_expression"], "postprocess": id},
     {"name": "unary_expression", "symbols": ["unary_operator", "primary_expression"], "postprocess":  data => ({
           type: 'unary_expression',
