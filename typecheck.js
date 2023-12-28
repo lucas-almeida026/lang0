@@ -14,11 +14,54 @@ if (path.extname(filename) !== '.json') {
   process.exit(1);
 }
 
+const TYPE_TREE = {
+  number: ['int', 'float'],
+  bool: ['true', 'false'],
+  string: 'string',
+  char: 'char',
+}
+
+const defs = {
+  '+': [['number', 'number', 'number']],
+  '-': [['number', 'number'], ['number', 'number', 'number']],
+  '*': [['number', 'number', 'number']],
+  '/': [['number', 'number', 'number']],
+  '!': [['bool', 'bool']],
+  '|': [['int', 'int', 'int']],
+  '&': [['int', 'int', 'int']],
+  '^': [['int', 'int', 'int']],
+  '>': [['number', 'number', 'bool']],
+  '<': [['number', 'number', 'bool']],
+  '<=': [['number', 'number', 'bool']],
+  '>=': [['number', 'number', 'bool']],
+  '==': [['bool', 'bool', 'bool']],
+  '!=': [['bool', 'bool', 'bool']],
+  '||': [['bool', 'bool', 'bool']],
+  '&&': [['bool', 'bool', 'bool']],
+}
+
+function is_type_related(typeA, typeB) {
+  if (typeA === typeB) return true
+  const defA = TYPE_TREE[typeA]
+  const defB = TYPE_TREE[typeB]
+  if (typeof defA === 'string' && typeof defB === 'string') {
+    return defA === defB
+  } else if (Array.isArray(defA) && !Array.isArray(defB)) {
+    return defA.reduce((acc, type) => acc || is_type_related(type, typeB), false)
+  } else if (!Array.isArray(defA) && Array.isArray(defB)) {
+    return defB.reduce((acc, type) => acc || is_type_related(typeA, type), false)
+  } else if (Array.isArray(defA) && Array.isArray(defB)) {
+    return defA.reduce((acc, typeA) => acc || defB.reduce((acc, typeB) => acc || is_type_related(typeA, typeB), false), false)
+  } else {
+    return false
+  }
+}
+
 try {
   const content = fs.readFileSync(filename, 'utf8');
   const ast = JSON.parse(content);
   console.log(check_program(ast));
-} catch(e) {
+} catch (e) {
   console.error(e?.message);
   process.exit(1);
 }
@@ -41,12 +84,38 @@ function check_program(ast) {
 }
 
 function check_binary_expression(node) {
-  const { left, right } = node
+  const { left, right, operator } = node
+  const opDefs = defs[operator?.value]
+  if (!opDefs) {
+    console.error(`TypeError: Operator ${operator?.value} not defined`)
+    return false
+  }
+  let usableDef = opDefs.length > 1 ? opDefs[1] : opDefs[0]
+  const [arg0, arg1, ret] = usableDef
+  if (!is_type_related(arg0, left.type)) {
+    console.error(`TypeError: Expected ${arg0} but got ${left.type}`)
+    return false
+  }
+  if (!is_type_related(arg1, right.type)) {
+    console.error(`TypeError: Expected ${arg1} but got ${right.type}`)
+    return false
+  }
   return check_program(left) && check_program(right)
 }
 
 function check_unary_expression(node) {
-  const { argument } = node
+  const { argument, operator } = node
+  const opDefs = defs[operator?.value]
+  if (!opDefs) {
+    console.error(`TypeError: Operator ${operator?.value} not defined`)
+    return false
+  }
+  let usableDef = opDefs.length > 1 ? opDefs[1] : opDefs[0]
+  const [arg0, ret] = usableDef
+  if (!is_type_related(arg0, argument.type)) {
+    console.error(`TypeError: Expected ${arg0} but got ${argument.type}`)
+    return false
+  }
   return check_program(argument)
 }
 

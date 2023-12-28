@@ -1,54 +1,42 @@
 {
   "type": "binary_expression",
   "operator": {
-    "type": "lor",
-    "value": "||",
-    "text": "||",
-    "offset": 10,
+    "type": "plus",
+    "value": "+",
+    "text": "+",
+    "offset": 2,
     "lineBreaks": 0,
     "line": 1,
-    "col": 11
+    "col": 3
   },
   "left": {
+    "type": "int",
+    "value": "2",
+    "text": "2",
+    "offset": 0,
+    "lineBreaks": 0,
+    "line": 1,
+    "col": 1
+  },
+  "right": {
     "type": "binary_expression",
     "operator": {
-      "type": "plus",
-      "value": "+",
-      "text": "+",
+      "type": "star",
+      "value": "*",
+      "text": "*",
       "offset": 6,
       "lineBreaks": 0,
       "line": 1,
       "col": 7
     },
     "left": {
-      "type": "binary_expression",
-      "operator": {
-        "type": "star",
-        "value": "*",
-        "text": "*",
-        "offset": 2,
-        "lineBreaks": 0,
-        "line": 1,
-        "col": 3
-      },
-      "left": {
-        "type": "int",
-        "value": "2",
-        "text": "2",
-        "offset": 0,
-        "lineBreaks": 0,
-        "line": 1,
-        "col": 1
-      },
-      "right": {
-        "type": "int",
-        "value": "3",
-        "text": "3",
-        "offset": 4,
-        "lineBreaks": 0,
-        "line": 1,
-        "col": 5
-      }
+      "type": "int",
+      "value": "3",
+      "text": "3",
+      "offset": 4,
+      "lineBreaks": 0,
+      "line": 1,
+      "col": 5
     },
     "right": {
       "type": "int",
@@ -58,102 +46,6 @@
       "lineBreaks": 0,
       "line": 1,
       "col": 9
-    }
-  },
-  "right": {
-    "type": "binary_expression",
-    "operator": {
-      "type": "eqeq",
-      "value": "==",
-      "text": "==",
-      "offset": 29,
-      "lineBreaks": 0,
-      "line": 1,
-      "col": 30
-    },
-    "left": {
-      "type": "binary_expression",
-      "operator": {
-        "type": "dash",
-        "value": "-",
-        "text": "-",
-        "offset": 15,
-        "lineBreaks": 0,
-        "line": 1,
-        "col": 16
-      },
-      "left": {
-        "type": "int",
-        "value": "3",
-        "text": "3",
-        "offset": 13,
-        "lineBreaks": 0,
-        "line": 1,
-        "col": 14
-      },
-      "right": {
-        "type": "parenthesized_expression",
-        "expression": {
-          "type": "binary_expression",
-          "operator": {
-            "type": "plus",
-            "value": "+",
-            "text": "+",
-            "offset": 24,
-            "lineBreaks": 0,
-            "line": 1,
-            "col": 25
-          },
-          "left": {
-            "type": "binary_expression",
-            "operator": {
-              "type": "star",
-              "value": "*",
-              "text": "*",
-              "offset": 20,
-              "lineBreaks": 0,
-              "line": 1,
-              "col": 21
-            },
-            "left": {
-              "type": "int",
-              "value": "3",
-              "text": "3",
-              "offset": 18,
-              "lineBreaks": 0,
-              "line": 1,
-              "col": 19
-            },
-            "right": {
-              "type": "int",
-              "value": "1",
-              "text": "1",
-              "offset": 22,
-              "lineBreaks": 0,
-              "line": 1,
-              "col": 23
-            }
-          },
-          "right": {
-            "type": "int",
-            "value": "3",
-            "text": "3",
-            "offset": 26,
-            "lineBreaks": 0,
-            "line": 1,
-            "col": 27
-          }
-        }
-      }
-    },
-    "right": {
-      "type": "int",
-      "value": "1",
-      "text": "1",
-      "offset": 32,
-      "lineBreaks": 0,
-      "line": 1,
-      "col": 33
     }
   }
 }
