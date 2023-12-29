@@ -83,6 +83,22 @@ function check_program(ast) {
   }
 }
 
+function is_node_of_type(node, type) {
+  const { type: node_type } = node
+  if (node_type === 'parenthesized_expression') {
+    const { expression } = node
+    return is_node_of_type(expression, type)
+  } else if (node_type === 'unary_expression') {
+    const { argument } = node
+    return is_node_of_type(argument, type)
+  } else if (node_type === 'binary_expression') {
+    const { left, right } = node
+    return is_node_of_type(left, type) || is_node_of_type(right, type)
+  } else {
+    return is_type_related(node_type, type)
+  }
+}
+
 function check_binary_expression(node) {
   const { left, right, operator } = node
   const opDefs = defs[operator?.value]
@@ -92,16 +108,17 @@ function check_binary_expression(node) {
   }
   let usableDef = opDefs.length > 1 ? opDefs[1] : opDefs[0]
   const [arg0, arg1, ret] = usableDef
-  if (!is_type_related(arg0, left.type)) {
+  if (!is_node_of_type(left, arg0)) {
     console.error(`TypeError: Expected ${arg0} but got ${left.type}`)
     return false
   }
-  if (!is_type_related(arg1, right.type)) {
+  if (!is_node_of_type(right, arg1)) {
     console.error(`TypeError: Expected ${arg1} but got ${right.type}`)
     return false
   }
   return check_program(left) && check_program(right)
 }
+
 
 function check_unary_expression(node) {
   const { argument, operator } = node
@@ -112,7 +129,7 @@ function check_unary_expression(node) {
   }
   let usableDef = opDefs.length > 1 ? opDefs[1] : opDefs[0]
   const [arg0, ret] = usableDef
-  if (!is_type_related(arg0, argument.type)) {
+  if (!is_node_of_type(argument, arg0)) {
     console.error(`TypeError: Expected ${arg0} but got ${argument.type}`)
     return false
   }

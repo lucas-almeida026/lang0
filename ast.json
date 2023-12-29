@@ -1,51 +1,267 @@
 {
   "type": "binary_expression",
   "operator": {
-    "type": "plus",
-    "value": "+",
-    "text": "+",
-    "offset": 2,
+    "type": "lor",
+    "value": "||",
+    "text": "||",
+    "offset": 23,
     "lineBreaks": 0,
     "line": 1,
-    "col": 3
+    "col": 24
   },
   "left": {
-    "type": "int",
-    "value": "2",
-    "text": "2",
-    "offset": 0,
-    "lineBreaks": 0,
-    "line": 1,
-    "col": 1
-  },
-  "right": {
     "type": "binary_expression",
     "operator": {
-      "type": "star",
-      "value": "*",
-      "text": "*",
-      "offset": 6,
+      "type": "or",
+      "value": "|",
+      "text": "|",
+      "offset": 19,
       "lineBreaks": 0,
       "line": 1,
-      "col": 7
+      "col": 20
     },
     "left": {
-      "type": "int",
-      "value": "3",
-      "text": "3",
-      "offset": 4,
-      "lineBreaks": 0,
-      "line": 1,
-      "col": 5
+      "type": "binary_expression",
+      "operator": {
+        "type": "gt",
+        "value": ">",
+        "text": ">",
+        "offset": 11,
+        "lineBreaks": 0,
+        "line": 1,
+        "col": 12
+      },
+      "left": {
+        "type": "binary_expression",
+        "operator": {
+          "type": "plus",
+          "value": "+",
+          "text": "+",
+          "offset": 2,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 3
+        },
+        "left": {
+          "type": "int",
+          "value": "2",
+          "text": "2",
+          "offset": 0,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 1
+        },
+        "right": {
+          "type": "binary_expression",
+          "operator": {
+            "type": "star",
+            "value": "*",
+            "text": "*",
+            "offset": 6,
+            "lineBreaks": 0,
+            "line": 1,
+            "col": 7
+          },
+          "left": {
+            "type": "int",
+            "value": "3",
+            "text": "3",
+            "offset": 4,
+            "lineBreaks": 0,
+            "line": 1,
+            "col": 5
+          },
+          "right": {
+            "type": "unary_expression",
+            "operator": {
+              "type": "dash",
+              "value": "-",
+              "text": "-",
+              "offset": 8,
+              "lineBreaks": 0,
+              "line": 1,
+              "col": 9
+            },
+            "argument": {
+              "type": "int",
+              "value": "4",
+              "text": "4",
+              "offset": 9,
+              "lineBreaks": 0,
+              "line": 1,
+              "col": 10
+            }
+          }
+        }
+      },
+      "right": {
+        "type": "binary_expression",
+        "operator": {
+          "type": "plus",
+          "value": "+",
+          "text": "+",
+          "offset": 15,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 16
+        },
+        "left": {
+          "type": "int",
+          "value": "5",
+          "text": "5",
+          "offset": 13,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 14
+        },
+        "right": {
+          "type": "int",
+          "value": "3",
+          "text": "3",
+          "offset": 17,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 18
+        }
+      }
     },
     "right": {
       "type": "int",
       "value": "4",
       "text": "4",
-      "offset": 8,
+      "offset": 21,
       "lineBreaks": 0,
       "line": 1,
-      "col": 9
+      "col": 22
+    }
+  },
+  "right": {
+    "type": "binary_expression",
+    "operator": {
+      "type": "gt",
+      "value": ">",
+      "text": ">",
+      "offset": 28,
+      "lineBreaks": 0,
+      "line": 1,
+      "col": 29
+    },
+    "left": {
+      "type": "int",
+      "value": "3",
+      "text": "3",
+      "offset": 26,
+      "lineBreaks": 0,
+      "line": 1,
+      "col": 27
+    },
+    "right": {
+      "type": "binary_expression",
+      "operator": {
+        "type": "dash",
+        "value": "-",
+        "text": "-",
+        "offset": 32,
+        "lineBreaks": 0,
+        "line": 1,
+        "col": 33
+      },
+      "left": {
+        "type": "int",
+        "value": "7",
+        "text": "7",
+        "offset": 30,
+        "lineBreaks": 0,
+        "line": 1,
+        "col": 31
+      },
+      "right": {
+        "type": "unary_expression",
+        "operator": {
+          "type": "dash",
+          "value": "-",
+          "text": "-",
+          "offset": 34,
+          "lineBreaks": 0,
+          "line": 1,
+          "col": 35
+        },
+        "argument": {
+          "type": "parenthesized_expression",
+          "expression": {
+            "type": "binary_expression",
+            "operator": {
+              "type": "land",
+              "value": "&&",
+              "text": "&&",
+              "offset": 46,
+              "lineBreaks": 0,
+              "line": 1,
+              "col": 47
+            },
+            "left": {
+              "type": "binary_expression",
+              "operator": {
+                "type": "plus",
+                "value": "+",
+                "text": "+",
+                "offset": 38,
+                "lineBreaks": 0,
+                "line": 1,
+                "col": 39
+              },
+              "left": {
+                "type": "int",
+                "value": "1",
+                "text": "1",
+                "offset": 36,
+                "lineBreaks": 0,
+                "line": 1,
+                "col": 37
+              },
+              "right": {
+                "type": "binary_expression",
+                "operator": {
+                  "type": "star",
+                  "value": "*",
+                  "text": "*",
+                  "offset": 42,
+                  "lineBreaks": 0,
+                  "line": 1,
+                  "col": 43
+                },
+                "left": {
+                  "type": "int",
+                  "value": "3",
+                  "text": "3",
+                  "offset": 40,
+                  "lineBreaks": 0,
+                  "line": 1,
+                  "col": 41
+                },
+                "right": {
+                  "type": "int",
+                  "value": "3",
+                  "text": "3",
+                  "offset": 44,
+                  "lineBreaks": 0,
+                  "line": 1,
+                  "col": 45
+                }
+              }
+            },
+            "right": {
+              "type": "int",
+              "value": "3",
+              "text": "3",
+              "offset": 49,
+              "lineBreaks": 0,
+              "line": 1,
+              "col": 50
+            }
+          }
+        }
+      }
     }
   }
 }
